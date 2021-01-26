@@ -4,24 +4,24 @@ class Soldier {
         this.health = health
         this.strength = strength
     }
-    attack () {
+    attack() {
         return this.strength
     }
-    receiveDamage (damage) {
+    receiveDamage(damage) {
         this.health -= damage
     }
 }
-let rambo = new Soldier(500,10)
+let rambo = new Soldier(500, 10)
 rambo.receiveDamage(99)
 
 // Viking
 class Viking extends Soldier {
-    constructor (name, health, strength) {
-        super (health, strength)
+    constructor(name, health, strength) {
+        super(health, strength)
         this.name = name
     }
 
-    receiveDamage (damage) {
+    receiveDamage(damage) {
         this.health -= damage
 
         if (this.health > 0) {
@@ -30,7 +30,7 @@ class Viking extends Soldier {
             return `${this.name} has died in act of combat`
         }
     }
-    battleCry () {
+    battleCry() {
         return `Odin Owns You All!`
     }
 
@@ -38,7 +38,22 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+    receiveDamage(damage) {
+
+        this.health -= damage
+
+        if (this.health > 0) {
+            return `A Saxon has received ${damage} points of damage`;
+        } else {
+            return `A Saxon has died in combat`;
+        }
+    }
+
+
+
+
+}
 
 // War
-class War {}
+class War { }
