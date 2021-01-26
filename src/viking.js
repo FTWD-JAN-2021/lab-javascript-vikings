@@ -56,4 +56,23 @@ class Saxon extends Soldier {
 }
 
 // War
-class War { }
+class War { 
+    vikingArmy = []
+    saxonArmy = []
+
+    addViking (sword) {
+        this.vikingArmy.push(sword)
+
+    }
+    addSaxon (arrow) {
+        this.saxonArmy.push(arrow)
+    }
+}
+
+let viking = new Viking ('Ragnar', 300, 300)
+let saxon = new Saxon (200, 250)
+
+let newWar = new War() 
+
+newWar.addSaxon(saxon)
+newWar.addViking(viking)
