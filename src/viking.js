@@ -71,6 +71,29 @@ class War {
         let luckySoldier = getRandomInt(this.vikingArmy.length)
         let unluckySoldier = getRandomInt(this.saxonArmy.length)
         this.saxonArmy[unluckySoldier].receiveDamage(this.vikingArmy[luckySoldier].strength)
+
+        if(this.saxonArmy[unluckySoldier].health<=0)
+        {
+            this.saxonArmy.splice(unluckySoldier,1);
+            return 'A Saxon has fallen'
+        }else{
+            return `A Saxon has received ${this.vikingArmy[luckySoldier].strength} of damage!`
+        }
+        
+    }
+
+    saxonAttack() {
+        let luckySoldier = getRandomInt(this.saxonArmy.length)
+        let unluckySoldier = getRandomInt(this.vikingArmy.length)
+        this.vikingArmy[unluckySoldier].receiveDamage(this.saxonArmy[luckySoldier].strength)
+
+        if(this.vikingArmy[unluckySoldier].health<=0)
+        {
+            this.vikingArmy.splice(unluckySoldier,1);
+            return 'A Viking has fallen'
+        }else{
+            return `${this.vikingArmy[unluckySoldier].name} has received ${this.saxonArmy[luckySoldier].strength} of damage!`
+        }
     }
 }
 
@@ -82,7 +105,6 @@ let newWar = new War()
 newWar.addSaxon(saxon)
 newWar.addViking(viking)
 
-newWar.vikingAttack()
 function getRandomInt (max) {
     return Math.floor(Math.random()*Math.floor(max))
 }
