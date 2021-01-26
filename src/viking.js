@@ -67,6 +67,11 @@ class War {
     addSaxon (arrow) {
         this.saxonArmy.push(arrow)
     }
+    vikingAttack() {
+        let luckySoldier = getRandomInt(this.vikingArmy.length)
+        let unluckySoldier = getRandomInt(this.saxonArmy.length)
+        this.saxonArmy[unluckySoldier].receiveDamage(this.vikingArmy[luckySoldier].strength)
+    }
 }
 
 let viking = new Viking ('Ragnar', 300, 300)
@@ -76,3 +81,8 @@ let newWar = new War()
 
 newWar.addSaxon(saxon)
 newWar.addViking(viking)
+
+newWar.vikingAttack()
+function getRandomInt (max) {
+    return Math.floor(Math.random()*Math.floor(max))
+}
