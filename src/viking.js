@@ -75,7 +75,7 @@ class War {
         if(this.saxonArmy[unluckySoldier].health<=0)
         {
             this.saxonArmy.splice(unluckySoldier,1);
-            return 'A Saxon has fallen'
+            return 'A Saxon has died in combat'
         }else{
             return `A Saxon has received ${this.vikingArmy[luckySoldier].strength} of damage!`
         }
@@ -92,7 +92,16 @@ class War {
             this.vikingArmy.splice(unluckySoldier,1);
             return 'A Viking has fallen'
         }else{
-            return `${this.vikingArmy[unluckySoldier].name} has received ${this.saxonArmy[luckySoldier].strength} of damage!`
+            return `${this.vikingArmy[unluckySoldier].name} has received ${this.saxonArmy[luckySoldier].strength} points of damage`
+        }
+    }
+    showStatus() {
+        if (this.saxonArmy.length == 0) {
+            return "Vikings have won the war of the century!"
+        } else if (this.vikingArmy.length == 0) {
+            return "Saxons have fought for their lives and survived another day..."
+        } else {
+            return "Vikings and Saxons are still in the thick of battle."
         }
     }
 }
